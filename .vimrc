@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 " vim-plug list of plugins
 Plug 'vim-airline/vim-airline'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
 
 " vim-plug end of list
 call plug#end()
@@ -37,3 +38,6 @@ au BufNewFile, BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
+" Spell checking
+" Markdown (vim-markdown plugin)
+let g:markdown_enable_spell_checking=0
