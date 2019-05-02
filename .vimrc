@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'scrooloose/nerdtree'
 
 " vim-plug end of list
 call plug#end()
@@ -45,3 +46,10 @@ au FileType markdown setlocal nospell
 
 " Colorscheme
 colorscheme apprentice
+
+" NERDTree
+let NERDTreeWinSize = 25
+
+" Key configuration
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
