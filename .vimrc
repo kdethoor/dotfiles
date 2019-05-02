@@ -40,4 +40,4 @@ au BufNewFile, BufRead *.py
 
 " Spell checking
 " Markdown (vim-markdown plugin)
-let g:markdown_enable_spell_checking=0
+au FileType markdown setlocal nospell
