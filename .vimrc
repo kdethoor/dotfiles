@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
+Plug 'rafi/awesome-vim-colorschemes'
 
 " vim-plug end of list
 call plug#end()
@@ -41,3 +42,6 @@ au BufNewFile, BufRead *.py
 " Spell checking
 " Markdown (vim-markdown plugin)
 au FileType markdown setlocal nospell
+
+" Colorscheme
+colorscheme apprentice
