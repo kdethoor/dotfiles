@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
+Plug 'pboettch/vim-cmake-syntax'
 
 " vim-plug end of list
 call plug#end()
