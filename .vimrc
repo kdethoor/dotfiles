@@ -19,6 +19,7 @@ Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mrk21/yaml-vim', {'for': 'yaml'}
 
 " vim-plug end of list
 call plug#end()
@@ -33,14 +34,24 @@ set number
 " Configure indentation and column line marker
 " Python, C++
 au BufNewFile,BufRead *.py,*.h,*.?pp,*.c,*.cc
-	\ set tabstop=4 |
-	\ set softtabstop=4 |
-	\ set shiftwidth=4 |
-	\ set textwidth=79 |
-	\ set expandtab |
-	\ set autoindent |
-	\ set fileformat=unix |
-	\ set colorcolumn=80
+	\ setlocal tabstop=4 |
+	\ setlocal softtabstop=4 |
+	\ setlocal shiftwidth=4 |
+	\ setlocal textwidth=79 |
+	\ setlocal expandtab |
+	\ setlocal autoindent |
+	\ setlocal fileformat=unix |
+	\ setlocal colorcolumn=80
+" YAML (https://lornajane.net/posts/2018/vim-settings-for-working-with-yaml)
+au BufNewFile,BufRead *.yaml,*.yml
+	\ set filetype=yaml |
+	\ set foldmethod=indent	|
+	\ normal zR
+au FileType yaml
+	\ setlocal tabstop=2 |
+	\ setlocal softtabstop=2 |
+	\ setlocal shiftwidth=2 |
+	\ setlocal expandtab
 " Spell checking
 " Markdown (vim-markdown plugin)
 au FileType markdown setlocal nospell
