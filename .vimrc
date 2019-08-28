@@ -24,38 +24,42 @@ Plug 'mrk21/yaml-vim', {'for': 'yaml'}
 " vim-plug end of list
 call plug#end()
 
-" Splits
+"===== Splits ====="
 set splitbelow
 set splitright
 
-" Line numbering
+"===== Line numbering ====="
 set number
 
-" Configure indentation and column line marker
+"===== File-type-specific indentation, tabs, etc ====="
 " Python, C++
-au BufNewFile,BufRead *.py,*.h,*.?pp,*.c,*.cc
-	\ setlocal tabstop=4 |
-	\ setlocal softtabstop=4 |
-	\ setlocal shiftwidth=4 |
-	\ setlocal textwidth=79 |
-	\ setlocal expandtab |
-	\ setlocal autoindent |
-	\ setlocal fileformat=unix |
-	\ setlocal colorcolumn=80
+au FileType python,cpp
+	\ set expandtab |	
+	\ set tabstop=4 | 	
+	\ set softtabstop=4 | 	
+	\ set shiftwidth=4 |	
+	\ set autoindent |
+	\ set textwidth=79 | 	
+	\ set colorcolumn=80	
+" Python
+au FileType python
+	\ setlocal foldmethod=indent |
+	\ normal zR
 " YAML (https://lornajane.net/posts/2018/vim-settings-for-working-with-yaml)
 au BufNewFile,BufRead *.yaml,*.yml
 	\ set filetype=yaml |
-	\ set foldmethod=indent	|
-	\ normal zR
 au FileType yaml
-	\ setlocal tabstop=2 |
-	\ setlocal softtabstop=2 |
-	\ setlocal shiftwidth=2 |
-	\ setlocal expandtab
+	\ set expandtab |
+	\ set tabstop=2 |
+	\ set softtabstop=2 |
+	\ set shiftwidth=2 |
+	\ set autoindent |
+	\ set foldmethod=indent |
+	\ normal zR
+
 " Spell checking
 " Markdown (vim-markdown plugin)
 au FileType markdown setlocal nospell
-
 
 " Additional shortcuts
 map <C-n> :NERDTreeToggle<CR>
