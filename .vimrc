@@ -20,6 +20,8 @@ Plug 'pboettch/vim-cmake-syntax'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mrk21/yaml-vim', {'for': 'yaml'}
+Plug 'ambv/black', {'for': 'python'}
+
 
 " vim-plug end of list
 call plug#end()
