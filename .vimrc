@@ -41,12 +41,15 @@ au FileType python,cpp
 	\ set softtabstop=4 | 	
 	\ set shiftwidth=4 |	
 	\ set autoindent |
-	\ set textwidth=79 | 	
-	\ set colorcolumn=80	
 " Python
 au FileType python
+	\ set textwidth=88 |
+	\ setlocal colorcolumn=88 |
 	\ setlocal foldmethod=indent |
-	\ normal zR
+	\ normal zR |
+au FileType cpp
+    \ set textwidth=79 |
+    \ setlocal colorcolumn=80 |
 " YAML (https://lornajane.net/posts/2018/vim-settings-for-working-with-yaml)
 au BufNewFile,BufRead *.yaml,*.yml
 	\ set filetype=yaml |
