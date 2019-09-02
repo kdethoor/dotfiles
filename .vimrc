@@ -17,28 +17,52 @@ Plug 'vim-airline/vim-airline'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'pboettch/vim-cmake-syntax'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mrk21/yaml-vim', {'for': 'yaml'}
+Plug 'ambv/black', {'for': 'python'}
+Plug 'cjrh/vim-conda'
+Plug 'tranvansang/octave.vim'
 
 " vim-plug end of list
 call plug#end()
 
-" Splits
+"===== Splits ====="
 set splitbelow
 set splitright
 
-" Line numbering
+"===== Line numbering ====="
 set number
 
-" Configure indentation
+"===== File-type-specific indentation, tabs, etc ====="
+" Python, C++
+au FileType python,cpp
+	\ set expandtab |	
+	\ set tabstop=4 | 	
+	\ set softtabstop=4 | 	
+	\ set shiftwidth=4 |	
+	\ set autoindent |
 " Python
-au BufNewFile, BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+au FileType python
+	\ set textwidth=88 |
+	\ setlocal colorcolumn=88 |
+	\ setlocal foldmethod=indent |
+	\ normal zR |
+au FileType cpp
+    \ set textwidth=79 |
+    \ setlocal colorcolumn=80 |
+" YAML (https://lornajane.net/posts/2018/vim-settings-for-working-with-yaml)
+au BufNewFile,BufRead *.yaml,*.yml
+	\ set filetype=yaml |
+au FileType yaml
+	\ set expandtab |
+	\ set tabstop=2 |
+	\ set softtabstop=2 |
+	\ set shiftwidth=2 |
+	\ set autoindent |
+	\ set foldmethod=indent |
+	\ normal zR
 
 " Spell checking
 " Markdown (vim-markdown plugin)
@@ -52,4 +76,5 @@ let NERDTreeWinSize = 25
 
 " Key configuration
 " NERDTree
+" Additional shortcuts
 map <C-n> :NERDTreeToggle<CR>
