@@ -22,7 +22,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mrk21/yaml-vim', {'for': 'yaml'}
 Plug 'ambv/black', {'for': 'python'}
-"Plug 'cjrh/vim-conda'
+Plug 'cjrh/vim-conda'
 Plug 'tranvansang/octave.vim'
 "Markdow preview - requires vim >= 8.1
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
