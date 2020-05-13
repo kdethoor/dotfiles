@@ -31,6 +31,9 @@ Plug 'lervag/vimtex', {'for': ['latex', 'plaintex'] }
 " vim-plug end of list
 call plug#end()
 
+"===== VimTex setting ====="
+let g:vimtex_view_method = 'mupdf'
+
 "===== Splits ====="
 set splitbelow
 set splitright
