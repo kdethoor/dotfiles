@@ -26,6 +26,7 @@ Plug 'cjrh/vim-conda'
 Plug 'tranvansang/octave.vim'
 "Markdow preview - requires vim >= 8.1
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'lervag/vimtex', {'for': ['latex', 'plaintex'] }
 
 " vim-plug end of list
 call plug#end()
@@ -69,6 +70,10 @@ au FileType yaml
 " Spell checking
 " Markdown (vim-markdown plugin)
 au FileType markdown setlocal nospell
+
+" File-type identification
+" TeX -> default flavor = latex, not plaintex
+let g:tex_flavor = 'latex'
 
 " Colorscheme
 colorscheme apprentice
