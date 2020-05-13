@@ -37,7 +37,7 @@ set splitright
 
 "===== Line numbering ====="
 set number
-
+"
 "===== File-type-specific indentation, tabs, etc ====="
 " Python, C++
 au FileType python,cpp
@@ -66,14 +66,19 @@ au FileType yaml
 	\ set autoindent |
 	\ set foldmethod=indent |
 	\ normal zR
+" LaTex
+" TeX -> default flavor = latex, not plaintex
+let g:tex_flavor = 'latex'
+au FileType tex
+	\ set expandtab |
+	\ set tabstop=4 |
+	\ set softtabstop=4 |
+	\ set shiftwidth=4 |
+	\ set autoindent |
 
 " Spell checking
 " Markdown (vim-markdown plugin)
 au FileType markdown setlocal nospell
-
-" File-type identification
-" TeX -> default flavor = latex, not plaintex
-let g:tex_flavor = 'latex'
 
 " Colorscheme
 colorscheme apprentice
