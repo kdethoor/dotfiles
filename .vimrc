@@ -33,6 +33,7 @@ call plug#end()
 
 "===== VimTex setting ====="
 let g:vimtex_view_method = 'mupdf'
+let g:vimtex_compiler_latexmk = { 'build_dir': 'build' }
 
 "===== Splits ====="
 set splitbelow
