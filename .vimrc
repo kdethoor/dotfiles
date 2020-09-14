@@ -80,8 +80,9 @@ au FileType tex
 	\ set shiftwidth=4 |
 	\ set autoindent |
 
-" Spell checking
 " Markdown (vim-markdown plugin)
+let g:markdown_enable_input_abbreviations=0
+" Spell checking
 au FileType markdown setlocal nospell
 
 " Colorscheme
