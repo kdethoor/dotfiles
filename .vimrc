@@ -85,6 +85,10 @@ let g:markdown_enable_input_abbreviations=0
 " Spell checking
 au FileType markdown setlocal nospell
 
+" Show whitespaces
+set listchars=eol:$,tab:\|-,trail:*
+set list
+
 " Colorscheme
 colorscheme apprentice
 
