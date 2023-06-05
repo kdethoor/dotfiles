@@ -30,16 +30,16 @@ function Format-ExecutionDuration {
 	$Seconds = $Duration.Seconds
 	$Milliseconds = $Duration.Milliseconds
 	if ($Days -gt 0) {
-		return "{0}d{0}h{0}m{0}s{0}ms" -f $Days,$Hours,$Minutes,$Seconds,$Milliseconds
+		return "{0}d{1}h{2}m{3}s{4}ms" -f $Days,$Hours,$Minutes,$Seconds,$Milliseconds
 	}
 	if ($Hours -gt 0) {
-		return "{0}h{0}m{0}s{0}ms" -f $Hours,$Minutes,$Seconds,$Milliseconds
+		return "{0}h{1}m{2}s{3}ms" -f $Hours,$Minutes,$Seconds,$Milliseconds
 	}
 	if ($Minutes -gt 0) {
-		return "{0}m{0}s{0}ms" -f $Minutes,$Seconds,$Milliseconds
+		return "{0}m{1}s{2}ms" -f $Minutes,$Seconds,$Milliseconds
 	}
 	if ($Seconds -gt 0) {
-		return "{0}s{0}ms" -f $Seconds,$Milliseconds
+		return "{0}s{1}ms" -f $Seconds,$Milliseconds
 	}
 	if ($Milliseconds -gt 0) {
 		return "{0}ms" -f $Milliseconds
