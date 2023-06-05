@@ -1,13 +1,23 @@
 function Get-LastExecutionDuration {
-	$History = $(Get-History)
+	$History = (Get-History)
 	if ($History.Length -eq 0) {
 		return New-TimeSpan
 	}
-	return $((Get-History)[-1].Duration)
+	$EndTime = (Get-History)[-1].EndExecutionTime
+	$StartTime = (Get-History)[-1].StartExecutionTime
+	return ($EndTime - $StartTime)
+}
+
+function IsWindows {
+	return ($Env:OS -match "Windows.*")
 }
 
 function Format-Location {
 	param([string]$Location)
+	$Home = $HOME
+	if (IsWindows) {
+		$Home = ($HOME -split "\\") -join '\\'
+	}
 	$Location = $Location -replace "${HOME}","~"
 	return $Location
 }
