@@ -24,7 +24,7 @@ function Format-Location {
 
 function Format-ExecutionDuration {
 	param([TimeSpan]$Duration)
-	$Days = $Duration.$Days
+	$Days = $Duration.Days
 	$Hours = $Duration.Hours
 	$Minutes = $Duration.Minutes
 	$Seconds = $Duration.Seconds
