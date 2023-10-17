@@ -1,4 +1,10 @@
-local lsp = require("lsp-zero").preset({})
+local success, lsp = pcall(require, "lsp-zero")
+
+if not success then
+	return
+end
+
+lsp.preset({})
 
 -- Language servers
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
