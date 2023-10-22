@@ -7,4 +7,4 @@ function SetColors(color)
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-SetColors("catpuccin-mocha")
+SetColors("catppuccin-mocha")
