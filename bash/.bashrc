@@ -62,4 +62,4 @@ trap "timer_start" DEBUG
 
 PROMPT_ELAPSED=''
 PROMPT_COMMAND=prompt_command
-PS1=$'\n\W${PROMPT_ELAPSED}\n\u276f '
+PS1=$'\n\w${PROMPT_ELAPSED}\n\u276f '
