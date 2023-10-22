@@ -12,7 +12,6 @@ alias grep='grep --color=auto'
 if [[ -r /usr/share/bash-completion/bash_completion ]];
 then
 	. /usr/share/bash-completion/bash_completion
-	echo hi
 fi
 
 # SSH (via gcr-ssh-agent)
@@ -24,7 +23,6 @@ fi
 # Neovim
 if [[ -x /usr/sbin/nvim ]]
 then
-	echo "hi"
 	alias vim=nvim
 	export GIT_EDITOR=nvim
 fi
