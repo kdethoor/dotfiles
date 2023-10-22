@@ -8,6 +8,11 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+if [[ $(which nvim) ]]
+then
+	alias vim='nvim'
+fi
+
 # Completion
 if [[ -r /usr/share/bash-completion/bash_completion ]];
 then
@@ -20,6 +25,9 @@ if [[ $(systemctl is-active --user gcr-ssh-agent.socket) -eq 0 ]]
 then
 	export SSH_AUTH_SOCK=$"${XDG_RUNTIME_DIR}/gcr/ssh"
 fi
+
+# Git editor
+export GIT_EDITOR="/usr/sbin/nvim"
 
 # Prompt
 ## Git
