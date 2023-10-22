@@ -15,6 +15,12 @@ then
 	echo hi
 fi
 
+# SSH (via gcr-ssh-agent)
+if [[ $(systemctl is-active --user gcr-ssh-agent.socket) -eq 0 ]]
+then
+	export SSH_AUTH_SOCK=$"${XDG_RUNTIME_DIR}/gcr/ssh"
+fi
+
 # Prompt
 ## Git
 parse_git_branch() {
