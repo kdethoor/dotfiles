@@ -16,6 +16,12 @@ then
 fi
 
 # Prompt
+## Git
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+## Elapsed time
 function timer_start() {
 	timer=${timer:-$SECONDS}
 }
@@ -62,4 +68,6 @@ trap "timer_start" DEBUG
 
 PROMPT_ELAPSED=''
 PROMPT_COMMAND=prompt_command
-PS1=$'\n\w${PROMPT_ELAPSED}\n\u276f '
+
+PS1=$'\n\e[1;37m\w\e[0;34m$(parse_git_branch)\e[0;33m${PROMPT_ELAPSED}\n\e[0;31m\u276f\e[0m '
+
