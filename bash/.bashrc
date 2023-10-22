@@ -8,11 +8,6 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-if [[ $(which nvim) ]]
-then
-	alias vim='nvim'
-fi
-
 # Completion
 if [[ -r /usr/share/bash-completion/bash_completion ]];
 then
@@ -26,8 +21,13 @@ then
 	export SSH_AUTH_SOCK=$"${XDG_RUNTIME_DIR}/gcr/ssh"
 fi
 
-# Git editor
-export GIT_EDITOR="/usr/sbin/nvim"
+# Neovim
+if [[ -x /usr/sbin/nvim ]]
+then
+	echo "hi"
+	alias vim=nvim
+	export GIT_EDITOR=nvim
+fi
 
 # Prompt
 ## Git
