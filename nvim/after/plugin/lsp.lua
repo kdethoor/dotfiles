@@ -4,25 +4,9 @@ if not success then
 	return
 end
 
-lsp.preset({})
-
 -- Language servers
-require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-require("lspconfig").pylsp.setup{
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {"W391"},
-          maxLineLength = 100
-        }
-      }
-    }
-  }
-}
 
-
--- LSP-specific remaps
+--- LSP-specific remaps
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
@@ -38,8 +22,21 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-lsp.setup()
+--- LSP installation (assumes mason was installed with lsp-zero
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"lua_ls",
+		"pyright", -- pyright requires npm
+	},
+	handlers = {
+		lsp.default_setup,
+		lua_ls = function()
+		end,
+	}
+})
 
+-- Autocompletion (assumes cmp was installed with lsp-zero)
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
