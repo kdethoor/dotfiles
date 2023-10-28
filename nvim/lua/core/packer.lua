@@ -36,15 +36,20 @@ return require("packer").startup(function(use)
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v3.x',
 	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {'williamboman/mason.nvim'},           -- Optional
-		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+		-- LSP Support
+		{'neovim/nvim-lspconfig'},             -- Required
+		{'williamboman/mason.nvim'},           -- Optional
+		{'williamboman/mason-lspconfig.nvim'}, -- Optional
+		-- Formatter Support
+		{'jose-elias-alvarez/null-ls.nvim'},   -- Optional; for formatters
+		{'jay-babu/mason-null-ls.nvim'},
+		{'jose-elias-alvarez/null-ls.nvim'},   -- Optional; for formatters
+		{"nvim-lua/plenary.nvim"},             -- Optional; for null-ls
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},     -- Required
-		  {'hrsh7th/cmp-nvim-lsp'}, -- Required
-		  {'L3MON4D3/LuaSnip'},     -- Required
+		-- Autocompletion
+		{'hrsh7th/nvim-cmp'},     -- Required
+		{'hrsh7th/cmp-nvim-lsp'}, -- Required
+		{'L3MON4D3/LuaSnip'},     -- Required
 	  }
   }
 
