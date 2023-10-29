@@ -31,6 +31,7 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
 		"pyright", -- pyright requires npm
+		"clangd"
 	},
 	handlers = {
 		lsp.default_setup,
@@ -44,7 +45,7 @@ require("mason-lspconfig").setup({
 --- Formatter installation
 --- (assumes mason, null-ls, mason-null-ls are installed with lsp-zero)
 require("mason-null-ls").setup({
-	ensure_installed = { "black" },
+	ensure_installed = { "black", "clang-format" },
 	automatic_installation = false,
 	handlers = {}
 })
