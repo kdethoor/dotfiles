@@ -6,6 +6,16 @@ end
 
 -- Language servers
 
+--- LSP config
+local lspconfig = require("lspconfig")
+
+--- Local overrides
+local local_override = nil
+success, local_override = pcall(require, "core_override")
+if not success then
+	local_override = nil
+end
+
 --- LSP-specific remaps
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
@@ -31,14 +41,27 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
 		"pyright", -- pyright requires npm
-		"clangd"
+		"clangd",
+		"omnisharp" -- omnisharp requires dotnet
 	},
 	handlers = {
 		lsp.default_setup,
 		lua_ls = function()
 			local lua_opts = lsp.nvim_lua_ls()
-			require("lspconfig").lua_ls.setup(lua_opts)
+			lspconfig.lua_ls.setup(lua_opts)
 		end,
+		omnisharp = function()
+			local patterns = { "*.csproj", "*.sln" }
+			if local_override then
+				local n = #local_override.lsp.omnisharp_root_patterns
+				for i = 1, n do
+					patterns[i] = local_override.lsp.omnisharp_root_patterns[i]
+				end
+			end
+			lspconfig.omnisharp.setup {
+				root_dir = lspconfig.util.root_pattern(patterns)
+			}
+		end
 	}
 })
 
