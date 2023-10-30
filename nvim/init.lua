@@ -7,6 +7,4 @@ then
 	with_packer = core_override.with_packer
 end
 
-print(with_packer)
-
 core.setup(with_packer)
