@@ -30,9 +30,6 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
 	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 	vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-	vim.keymap.set("n", "<leader>ff", function ()
-		vim.lsp.buf.format({async=false, timeout=10000})
-	end, opts)
 end)
 
 --- LSP installation (assumes mason was installed with lsp-zero
@@ -64,16 +61,6 @@ require("mason-lspconfig").setup({
 		end
 	}
 })
-
---- Formatter installation
---- (assumes mason, null-ls, mason-null-ls are installed with lsp-zero)
-require("mason-null-ls").setup({
-	ensure_installed = { "black", "clang-format" },
-	automatic_installation = false,
-	handlers = {}
-})
-local null_ls = require("null-ls")
-null_ls.setup()
 
 -- Autocompletion (assumes cmp was installed with lsp-zero)
 local cmp = require("cmp")
