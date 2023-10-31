@@ -4,7 +4,7 @@ if not success then
 	return
 end
 
-vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+vim.keymap.set("n", "<C-p>", function() builtin.find_files({ no_ignore = true }) end, {})
 vim.keymap.set("n", "<leader>pg", builtin.git_files, {})
 vim.keymap.set("n",
 	"<leader>ps",
