@@ -49,7 +49,7 @@ require("mason-lspconfig").setup({
 		end,
 		omnisharp = function()
 			local patterns = { "*.csproj", "*.sln" }
-			if local_override then
+			if local_override and local_override.lsp and local_override.lsp.omnisharp_root_patterns then
 				local n = #local_override.lsp.omnisharp_root_patterns
 				for i = 1, n do
 					patterns[i] = local_override.lsp.omnisharp_root_patterns[i]
@@ -73,3 +73,4 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-Space>"] = cmp.mapping.complete(),
 })
 cmp.setup({ mapping = cmp_mappings })
+
