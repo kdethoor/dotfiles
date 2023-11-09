@@ -1,5 +1,6 @@
 Import-Module -Name $($($(Get-Item $PROFILE).Directory.FullName) + "/ProfileHelper")
 
+# Prompt
 function prompt {
 	$Location = Format-Location $(Get-Location)
 	$Duration = Get-LastExecutionDuration
@@ -12,6 +13,31 @@ function prompt {
 	return " "	
 }
 
+# Visual Studio
+## Source: https://stackoverflow.com/questions/2124753/how-can-i-use-powershell-with-the-visual-studio-command-prompt
+function Import-VsDevCmd {
+	$VsTools = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools"
+	$VsScript = "VsDevCmd.bat"
+	if (Test-Path -Path $VsTools) {
+		pushd $VsTools
+		cmd /c "${VsScript}&set" |
+		foreach {
+		  if ($_ -match "=") {
+			$v = $_.split("=", 2); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
+		  }
+		}
+		popd
+		Write-Host "Visual Studio 2022 Command Prompt variables set." -ForegroundColor Green
+	}
+	else {
+		Write-Host "VsDevCmd.bat not found at ${VsTools}\${VsScript}." -ForegroundColor Red
+	}
+}
+
+## Aliases
+Set-Alias vim nvim
+
+## Local profile
 if (Test-Path -Path "$((Get-Item $PROFILE).Directory.FullName)/Local.ps1") {
 	. "$((Get-Item $PROFILE).Directory.FullName)/Local.ps1"
 }
