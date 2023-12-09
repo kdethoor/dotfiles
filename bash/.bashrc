@@ -40,6 +40,9 @@ then
 	complete -f -F _dotnet_bash_complete dotnet
 fi
 
+# Bindings
+bind -x '"\C-\E":"vim ."'
+
 # Prompt
 ## Git
 parse_git_branch() {
