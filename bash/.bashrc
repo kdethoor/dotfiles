@@ -21,7 +21,7 @@ then
 fi
 
 # Neovim
-if [[ -x /usr/sbin/nvim ]]
+if [[ -x /usr/sbin/nvim ]] || [[ -x /usr/bin/nvim ]]
 then
 	alias vim=nvim
 	export GIT_EDITOR=nvim
