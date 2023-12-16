@@ -6,7 +6,8 @@ function prompt {
 	$Duration = Get-LastExecutionDuration
 	$Duration = Format-ExecutionDuration $Duration
 
-	Write-Host "${Location}" -foregroundcolor Blue -nonewline
+	Write-Host "[${Env:COMPUTERNAME}]" -foregroundcolor Green -nonewline
+	Write-Host " ${Location}" -foregroundcolor Blue -nonewline
 	Write-Host " ${Duration}" -foregroundcolor Yellow
 
 	Write-Host "$([char]0x276F)" -foregroundcolor Red -nonewline
