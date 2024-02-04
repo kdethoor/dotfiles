@@ -55,9 +55,6 @@ function Enter-VsDevShell {
 ## Aliases
 Set-Alias vim nvim
 
-## Dev
-function En
-
 ## Local profile
 if (Test-Path -Path "$((Get-Item $PROFILE).Directory.FullName)/Local.ps1") {
 	. "$((Get-Item $PROFILE).Directory.FullName)/Local.ps1"
