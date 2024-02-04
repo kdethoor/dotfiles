@@ -17,34 +17,34 @@ function prompt {
 # Visual Studio
 ## Source: https://stackoverflow.com/questions/2124753/how-can-i-use-powershell-with-the-visual-studio-command-prompt
 function Import-VsDevCmd {
-	Write-Host "This method is deprecated, please use 'Enter-VsDevShell'" -ForegroundColor Yellow
-	return;
+	#Write-Host "This method is deprecated, please use 'Enter-VsDevShell'" -ForegroundColor Yellow
+	#return;
 
-	##$VsTools = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools"
-	##$VsScript = "VsDevCmd.bat"
-	##if (Test-Path -Path $VsTools) {
-	##	pushd $VsTools
-	##	cmd /c "${VsScript}&set" |
-	##	foreach {
-	##	  if ($_ -match "=") {
-	##		$v = $_.split("=", 2); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
-	##	  }
-	##	}
-	##	popd
-	##	Write-Host "Visual Studio 2022 Command Prompt variables set." -ForegroundColor Green
-	##}
-	##else {
-	##	Write-Host "VsDevCmd.bat not found at ${VsTools}\${VsScript}." -ForegroundColor Red
-	##}
+	$VsTools = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools"
+	$VsScript = "VsDevCmd.bat"
+	if (Test-Path -Path $VsTools) {
+		pushd $VsTools
+		cmd /c "${VsScript}&set" |
+		foreach {
+		  if ($_ -match "=") {
+			$v = $_.split("=", 2); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
+		  }
+		}
+		popd
+		Write-Host "Visual Studio 2022 Command Prompt variables set." -ForegroundColor Green
+	}
+	else {
+		Write-Host "VsDevCmd.bat not found at ${VsTools}\${VsScript}." -ForegroundColor Red
+	}
 }
 
 function Enter-VsDevShell {
 	param (
-		[string]$arch
+		[string]$arch = "amd64"
 	)
 	$VsScript = 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1'
 	if (Test-path -Path $VsScript) {
-		& "${VsScript}" "${arch}" -SkipAutomaticLocation
+		& "${VsScript}" -Arch "${arch}" -SkipAutomaticLocation
 	}
 	else
 	{
