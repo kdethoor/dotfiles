@@ -14,5 +14,5 @@ I aim at keeping them as simple, clear and concise as possible.
 For the plugins
 - RipGrep
 - clang (alternative: Visual Studio + its environment variables)
-- nodejs
+- npm
 
