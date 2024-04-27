@@ -1,6 +1,3 @@
--- Language
-vim.cmd("language C.utf8")
-
 -- Leader key
 vim.g.mapleader = " "
 
