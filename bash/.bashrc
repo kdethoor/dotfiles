@@ -4,6 +4,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Platform flags
+is_mac=$( [[ $(uname -s) == "Darwin" ]] )
+is_linux=$( [[ $(uname -s) == "Linux" ]] )
+
+# Locale
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 # Aliases
 alias lsa='ls -ahl --color=auto'
 alias grep='grep --color=auto'
@@ -14,14 +22,23 @@ then
 	. /usr/share/bash-completion/bash_completion
 fi
 
-# SSH (via gcr-ssh-agent)
-if [[ $(systemctl is-active --user gcr-ssh-agent.socket) -eq 0 ]]
+# Bash deprecation warning
+if [[ is_mac ]]
 then
-	export SSH_AUTH_SOCK=$"${XDG_RUNTIME_DIR}/gcr/ssh"
+	export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
+# SSH (via gcr-ssh-agent)
+if [[ is_linux == 0 ]]
+then
+	if [[ $(systemctl is-active --user gcr-ssh-agent.socket) -eq 0 ]]
+	then
+		export SSH_AUTH_SOCK=$"${XDG_RUNTIME_DIR}/gcr/ssh"
+	fi
 fi
 
 # Neovim
-if [[ -x /usr/sbin/nvim ]] || [[ -x /usr/bin/nvim ]]
+if [[ -x /usr/sbin/nvim ]] || [[ -x /usr/bin/nvim ]] || [[ -x /usr/local/bin/nvim ]]
 then
 	alias vim=nvim
 	export GIT_EDITOR=nvim
@@ -97,7 +114,7 @@ trap "timer_start" DEBUG
 PROMPT_ELAPSED=''
 PROMPT_COMMAND=prompt_command
 
-PS1=$'\n\e[1;32m[\h] \e[1;37m\w\e[0;34m$(parse_git_branch)\e[0;33m${PROMPT_ELAPSED}\n\e[0;31m\u276f\e[0m '
+PS1=$'\e[1;32m[\u@\h] \e[1;37m\w\e[0;34m$(parse_git_branch)\e[0;33m${PROMPT_ELAPSED}\n\e[0;31m\xe2\x9d\xaf\e[0m '
 
 if [[ -r ~/.local.bashrc ]]
 then
