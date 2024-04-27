@@ -28,6 +28,7 @@ class Platform(Enum):
     Unknown = 0
     Linux = 1
     Windows = 2
+    Mac = 3
 
 
 class VerboseLevel(IntEnum):
@@ -45,7 +46,7 @@ class InstallFailedError(Exception):
 class Neovim:
     @staticmethod
     def get_install_dir(platform: Platform) -> Path | None:
-        if platform == Platform.Linux:
+        if platform == Platform.Linux or platform == Platform.Mac:
             return Path(os.environ["HOME"]) / ".config" / "nvim"
         elif platform == Platform.Windows:
             return Path(os.environ["LOCALAPPDATA"]) / "nvim"
@@ -68,6 +69,8 @@ def get_platform() -> Platform:
         p = Platform.Linux
     elif sys.platform == "win32":
         p = Platform.Windows
+    elif sys.platform == "darwin":
+        p = Platform.Mac
 
     return p
 
