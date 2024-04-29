@@ -1,2 +1,8 @@
 live_config_reload = true
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[keyboard]
+bindings = [
+	{ key="Q", mods="Command", action="None" }, # not working on MacOS
+	{ key="W", mods="Command", action="None" }
+]
