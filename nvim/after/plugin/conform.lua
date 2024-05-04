@@ -15,7 +15,11 @@ local function format()
 end
 
 local function format_write()
-	conform.format({ lsp_fallback=true }, vim.cmd.write)
+	conform.format({ lsp_fallback=true }, function(err)
+		if not err then
+			vim.cmd.write()
+		end
+	end)
 end
 
 vim.keymap.set("n", "<leader>f", format, {})
