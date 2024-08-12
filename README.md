@@ -14,6 +14,7 @@ For the plugins
 - RipGrep
 - clang (alternative: Visual Studio + its environment variables)
 - npm
+- debugpy (for Python debugging)
 
 # Notes
 ## Alacritty
