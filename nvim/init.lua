@@ -1,10 +1,15 @@
-local core = require("core")
-local has_override, core_override = pcall(require, "core_override")
+-- Base config
+require("config.editor")
+require("config.remap")
 
-local with_packer = false
-if (has_override)
+-- Plugins
+local use_plugins = true
+local has_local_config, local_config = pcall(require, "config.local")
+if (has_local_config)
 then
-	with_packer = core_override.with_packer
+	use_plugins = use_plugins and local_config.use_plugins
 end
-
-core.setup(with_packer)
+if (use_plugins)
+then
+	require("config.lazy")
+end
