@@ -52,10 +52,13 @@ function Enter-VsDevShell {
 	}
 }
 
-## Aliases
+# Neovim
+$Env:TERM="xterm-256color" # correctly reset the terminal window when leaving Neovim
+
+# Aliases
 Set-Alias vim nvim
 
-## Local profile
+# Local profile
 if (Test-Path -Path "$((Get-Item $PROFILE).Directory.FullName)/Local.ps1") {
 	. "$((Get-Item $PROFILE).Directory.FullName)/Local.ps1"
 }
