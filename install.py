@@ -47,7 +47,7 @@ class Neovim:
     @staticmethod
     def get_install_dir(platform: Platform) -> Path | None:
         if platform == Platform.Linux or platform == Platform.Mac:
-            return Path(os.environ["HOME"]) / ".config" / "nvim"
+            return Path(os.environ["HOMEDRIVE"]) / os.environ["HOMEPATH"] / ".config" / "nvim"
         elif platform == Platform.Windows:
             return Path(os.environ["LOCALAPPDATA"]) / "nvim"
         else:
@@ -57,7 +57,7 @@ class PowerShell:
     @staticmethod
     def get_install_dir(platform: Platform) -> Path | None:
         if platform == Platform.Windows:
-            return Path(os.environ["HOME"]) / "Documents" / "WindowsPowerShell"
+            return Path(os.environ["HOMEDRIVE"]) / os.environ["HOMEPATH"] / "Documents" / "WindowsPowerShell"
         else:
             return None
 
