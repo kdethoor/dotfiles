@@ -1,0 +1,25 @@
+" Leader key
+let g:mapleader = " "
+
+" Indenting
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab=false
+
+" Line wrapping
+set wrap=false
+
+" Search
+set incsearch=true
+
+" Scrolling
+set scrolloff=8
+
+" VS commands
+nnoremap <C-p> :vsc Edit.GoToFile<CR>
+nnoremap <Leader>b :vsc Build.BuildSolution<CR>
+nnoremap <Leader>c :vsc Build.BuildOnlyProject<CR>
+nnoremap <Leader>x :vsc Build.Compile<CR>
+nnoremap <Leader>e :vsc Edit.FindAllReferences<CR>
+
