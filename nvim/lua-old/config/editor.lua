@@ -4,9 +4,6 @@ vim.g.mapleader = " "
 -- Colors
 vim.opt.termguicolors = true
 
--- Fold
-vim.opt.foldlevel = 99
-
 -- Indenting
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

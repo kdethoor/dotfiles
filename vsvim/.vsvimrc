@@ -22,4 +22,11 @@ nnoremap <Leader>b :vsc Build.BuildSolution<CR>
 nnoremap <Leader>c :vsc Build.BuildOnlyProject<CR>
 nnoremap <Leader>x :vsc Build.Compile<CR>
 nnoremap <Leader>e :vsc Edit.FindAllReferences<CR>
-
+nnoremap <K> :vsc Edit.QuickInfo<CR>
+nnoremap <C-o> :vsc View.NavigateBackward<CR>
+nnoremap <C-i> :vsc View.NavigateForward<CR>
+nnoremap <Leader>rn :vsc Refactor.Rename<CR>
+nnoremap <Leader>k :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<CR>
+nnoremap <Leader>cn :vsc Github.Copilot.Chat.NewThread<CR>
+nnoremap <Leader>co :vsc Github.Copilot.Chat.OpenThreads<CR>
+nnoremap <Leader>ca :vsc Ask.Copilot<CR>
