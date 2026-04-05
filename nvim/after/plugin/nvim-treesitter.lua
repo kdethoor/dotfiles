@@ -10,12 +10,15 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("enable_treesitter", {}),
 	callback = function(event)
 		local bufnr = event.buf
+        local lsp_handled_ft = { "cpp" }
 		local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
 		local start_ts = function()
 			vim.treesitter.start(bufnr, parser_name)
-			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			vim.wo.foldmethod = "expr"
-			vim.bo.indentexpr = "v:lua.vim.treesitter.indentexpr()"
+			if not vim.tbl_contains(lsp_handled_ft, filetype) then
+                vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                vim.wo.foldmethod = 'expr'
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
 		end
 
 		if filetype == "" then

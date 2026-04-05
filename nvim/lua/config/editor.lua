@@ -4,6 +4,12 @@ vim.g.mapleader = " "
 -- Colors
 vim.opt.termguicolors = true
 
+-- Column hint
+vim.opt.colorcolumn = "88"
+
+-- Completion
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
 -- Fold
 vim.opt.foldlevel = 99
 
@@ -11,9 +17,7 @@ vim.opt.foldlevel = 99
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
-
-vim.opt.smartindent = true
+vim.opt.expandtab = true
 
 -- Line numbers
 vim.opt.nu = true
@@ -23,15 +27,17 @@ vim.g.netrw_bufsettings = "noma nomod rnu nowrap ro nobl"
 -- Line wrapping
 vim.opt.wrap = false
 
--- Column hint
-vim.opt.colorcolumn = "88"
+-- Scrolling
+vim.opt.scrolloff = 8
 
 -- Search
 vim.opt.incsearch = true
 
--- Scrolling
-vim.opt.scrolloff = 8
+-- Spellchecking
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
 
 -- Swap and backup files
 vim.opt.swapfile = false
 vim.opt.backup = false
+

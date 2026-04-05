@@ -5,6 +5,11 @@
       "src": "https://github.com/catppuccin/nvim",
       "version": "'v2.0.0'"
     },
+    "nvim-lspconfig": {
+      "rev": "0203a9608d63eda57679b01e69f33a7b4c34b0d1",
+      "src": "https://github.com/neovim/nvim-lspconfig",
+      "version": "'v2.7.0'"
+    },
     "nvim-treesitter": {
       "rev": "972f378653c794b0ff82282a844732695064b70f",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -14,6 +19,11 @@
       "rev": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0",
       "src": "https://github.com/nvim-lua/plenary.nvim",
       "version": "'55d9fe89e33efd26f532ef20223e5f9430c8b0c0'"
+    },
+    "telescope-fzf-native.nvim": {
+      "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
+      "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+      "version": "'6fea601bd2b694c6f2ae08a6c6fab14930c60e2c'"
     },
     "telescope.nvim": {
       "rev": "3333a52ff548ba0a68af6d8da1e54f9cd96e9179",
