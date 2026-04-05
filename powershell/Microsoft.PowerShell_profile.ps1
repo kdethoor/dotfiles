@@ -2,9 +2,15 @@ Import-Module -Name $($($(Get-Item $PROFILE).Directory.FullName) + "/ProfileHelp
 
 # Prompt
 function prompt {
-	$Location = Format-Location $(Get-Location)
-	$Duration = Get-LastExecutionDuration
-	$Duration = Format-ExecutionDuration $Duration
+    Write-Host "$([char]27)" -NoNewline
+    try {
+        $Location = Format-Location $(Get-Location)
+        $Duration = Get-LastExecutionDuration
+        $Duration = Format-ExecutionDuration $Duration
+    } catch {
+        $Location = $(Get-Location)
+        $Duration = "(NA)"
+    }
 
 	Write-Host "[${Env:COMPUTERNAME}]" -foregroundcolor Green -nonewline
 	Write-Host " ${Location}" -foregroundcolor Blue -nonewline
