@@ -2,7 +2,6 @@ Import-Module -Name $($($(Get-Item $PROFILE).Directory.FullName) + "/ProfileHelp
 
 # Prompt
 function prompt {
-    Write-Host "$([char]27)" -NoNewline
     try {
         $Location = Format-Location $(Get-Location)
         $Duration = Get-LastExecutionDuration
