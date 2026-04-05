@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         local name = ev.data.name
         local kind = ev.data.kind
-        if (kind == "install" or kind == "update") then
+        if (name == "telescope-fzf-native.nvim") and (kind == "install" or kind == "update") then
             vim.system({ "powershell.exe"
                 , "(cmake -S. -Bbuild)"
                 , "-And"
