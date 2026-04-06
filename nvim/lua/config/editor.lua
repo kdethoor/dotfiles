@@ -33,6 +33,9 @@ vim.opt.scrolloff = 8
 -- Search
 vim.opt.incsearch = true
 
+-- Shell
+vim.o.shell = "powershell.exe"
+
 -- Spellchecking
 vim.opt.spell = true
 vim.opt.spelllang = { "en_us" }
